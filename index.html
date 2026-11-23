@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transparência Upaon Açu · Contratos e gastos das prefeituras do Maranhão</title>
+<meta name="description" content="Todos os contratos da Prefeitura de Raposa de 2020 a 2026, por ano, mês e área, com o documento oficial de cada um. Uma ferramenta do Portal Upaon Açu.">
+<meta property="og:title" content="Transparência Upaon Açu">
+<meta property="og:description" content="Quanto a sua prefeitura gasta, com quem e em quê. Com o documento oficial de cada contrato.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1324;--card:#121c33;--card2:#0f182c;--line:#22304f;--txt:#e8edf7;--mut:#93a1bf;--gold:#f5b82e;--red:#ff6b6b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.top{position:sticky;top:0;z-index:10;background:rgba(11,19,36,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:60px}
+.logo{width:36px;height:36px;border-radius:9px;background:var(--gold);color:#0b1324;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.brand{font-weight:800;font-size:16px;line-height:1.1;color:var(--txt)}
+.brand small{display:block;font-weight:500;font-size:11px;color:var(--mut)}
+.top nav{margin-left:auto;display:flex;gap:14px;font-size:13px}
+.top nav a{color:var(--mut)}
+@media(max-width:640px){.top nav{display:none}}
+.crumbs{font-size:13px;color:var(--mut);margin:18px 0 6px}
+.crumbs a{color:var(--mut)}
+.crumbs b{color:var(--txt)}
+.hero{padding:34px 0 16px}
+.hero h1{font-size:34px;line-height:1.1;margin:0 0 10px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--mut);margin:0 0 18px;font-size:15px;max-width:660px}
+@media(max-width:600px){.hero h1{font-size:26px}}
+.search{display:flex;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px}
+.search input{flex:1;min-width:0;padding:12px;border:0;background:transparent;color:var(--txt);font:500 15px Inter;outline:none}
+.search button{padding:0 18px;border-radius:10px;border:0;background:var(--gold);color:#0b1324;font:700 14px Inter;cursor:pointer}
+.hint{font-size:12px;color:var(--mut);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:14px 0}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative;color:var(--txt);display:block}
+a.tile:hover{border-color:var(--gold);text-decoration:none}
+.tile h3{margin:0 0 4px;font-size:18px}
+.tile p{margin:0;color:var(--mut);font-size:13px}
+.tile .badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--gold);color:#0b1324}
+.tile.off{opacity:.5}
+.tile.off .badge{background:var(--line);color:var(--mut)}
+.state{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,#16244a,#0f1a33);border:1px solid var(--line);border-radius:18px;padding:22px;color:var(--txt)}
+.state:hover{border-color:var(--gold);text-decoration:none}
+.state h2{margin:0;font-size:24px}
+.state p{margin:4px 0 0;color:var(--mut);font-size:14px}
+section.block{margin:24px 0}
+section.block>h2{font-size:18px;margin:0 0 4px}
+p.sub{color:var(--mut);font-size:13px;margin:0 0 10px}
+.mhead{background:linear-gradient(135deg,#16244a,#0f1a33);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:6px}
+.mhead h1{margin:0;font-size:30px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pill{font-size:12px;padding:5px 10px;border-radius:999px;background:var(--card2);border:1px solid var(--line);color:var(--mut)}
+.pill b{color:var(--txt)}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:14px 0 6px;padding-bottom:4px;scrollbar-width:none}
+.tab{flex:none;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--mut);font:600 13px Inter;cursor:pointer;white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.on{background:var(--gold);color:#0b1324;border-color:var(--gold)}
+.tabs.sm .tab{padding:7px 12px;font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.kpi b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.kpi span{font-size:12px;color:var(--mut)}
+.kpi.big b{color:var(--gold)}
+@media(max-width:700px){.kpis{grid-template-columns:repeat(2,1fr)}.kpi b{font-size:18px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:12px}
+.card h2{font-size:15px;margin:0 0 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.card h2 small{color:var(--mut);font-weight:500;font-size:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.rank{display:grid;gap:9px}
+.rk{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;font-size:13px;cursor:pointer;border-radius:8px}
+.rk.sel .nm{color:var(--gold)}
+.rk .n{color:var(--mut);font-weight:700}
+.rk .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rk .v{font-weight:700;font-variant-numeric:tabular-nums}
+.rk .track{grid-column:2/4;height:6px;background:var(--bg);border-radius:4px;overflow:hidden}
+.rk .track i{display:block;height:100%;background:var(--gold);border-radius:4px}
+.rk .sub{grid-column:2/4;font-size:11px;color:var(--mut);margin-top:-4px}
+.months{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+@media(max-width:700px){.months{grid-template-columns:repeat(3,1fr)}}
+.mo{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer;text-align:left;color:var(--txt);font:inherit}
+.mo:hover{border-color:var(--gold)}
+.mo.on{border-color:var(--gold);background:#1b2742}
+.mo.empty{opacity:.4;cursor:default}
+.mo b{display:block;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.mo span{display:block;font-weight:800;font-size:15px;margin-top:3px}
+.mo small{color:var(--mut);font-size:11px}
+.mo .mini{height:4px;background:var(--bg);border-radius:3px;margin-top:6px;overflow:hidden}
+.mo .mini i{display:block;height:100%;background:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer}
+.list .it{display:block;padding:12px 4px;border-bottom:1px solid var(--line);color:var(--txt)}
+.list .it:hover{text-decoration:none;background:var(--card2)}
+.it .row1{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.it .emp{font-weight:700;font-size:14px}
+.it .val{font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.it .obj{color:var(--mut);font-size:12px;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.it .meta{font-size:11px;color:var(--mut);margin-top:4px}
+.tag{display:inline-block;font-size:10px;padding:2px 6px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--mut);margin-right:4px}
+.tag.ad{border-color:#5a4a12;color:#f3dfa4}
+.filters{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:8px}
+@media(max-width:760px){.filters{grid-template-columns:1fr 1fr}}
+.filters input,.filters select,.filter{width:100%;padding:9px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--txt);font:13px Inter}
+.more{margin-top:10px;width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--txt);font:600 13px Inter;cursor:pointer;display:block;text-align:center}
+.btn{display:inline-block;padding:11px 16px;border-radius:10px;background:var(--gold);color:#0b1324;font:700 14px Inter;border:0;cursor:pointer}
+.btn:hover{text-decoration:none;filter:brightness(1.05)}
+.btn2{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid var(--gold);background:transparent;color:var(--gold);font:700 13px Inter;cursor:pointer}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.doc{white-space:pre-wrap;font-size:13px;line-height:1.6;color:#cfd8ea;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px;max-height:420px;overflow:auto}
+.dl{display:grid;grid-template-columns:140px 1fr;gap:6px 12px;font-size:14px}
+.dl dt{color:var(--mut)}
+.dl dd{margin:0}
+@media(max-width:560px){.dl{grid-template-columns:1fr}.dl dt{margin-top:6px}}
+.status{margin:12px 2px;color:var(--mut);font-size:14px;min-height:20px}
+.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.find{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:14px 16px;margin-top:10px}
+.find h3{margin:0 0 4px;font-size:15px}
+.find .val{color:var(--gold);font-weight:800;font-size:20px;margin:2px 0 6px}
+.find p{margin:0 0 6px;font-size:13px;color:var(--mut);line-height:1.5}
+.find .q{font-size:13px}
+.find .src{font-size:12px;margin-top:6px;display:flex;flex-wrap:wrap;gap:10px}
+.news{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:10px;color:var(--txt)}
+.news:hover{border-color:var(--gold);text-decoration:none}
+.news small{color:var(--mut);font-size:12px}
+.news h3{margin:4px 0;font-size:15px}
+.news p{margin:0;color:var(--mut);font-size:13px}
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:10px}
+.links a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--txt);font-size:14px;font-weight:600}
+.links a small{display:block;color:var(--mut);font-weight:500;font-size:12px;margin-top:2px}
+.warn{background:#2a2410;border:1px solid #5a4a12;color:#f3dfa4;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.5;margin-top:12px}
+canvas{max-width:100%;border-radius:12px;margin-top:10px;display:none}
+.hide{display:none!important}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 40px;color:var(--mut);font-size:12px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a href="#inicio" class="logo">UA</a>
+  <a href="#inicio" class="brand">Transparência Upaon Açu<small>por @portal.upaon.acu</small></a>
+  <nav><a href="#maranhao">Maranhão</a><a href="#raposa">Raposa</a><a href="#raposa-contratos">Todos os contratos</a></nav>
+</div></div>
+<main class="wrap" id="app"><div class="status">Carregando…</div></main>
+<footer class="wrap">
+  <b>Como ler os números:</b> os valores são o valor contratado publicado no Diário Oficial do Município (extratos de contrato) ou informado ao PNCP, não o valor efetivamente pago. Os totais somam só contratos; aditivos aparecem na lista mas não entram na soma. A leitura dos extratos foi automática: confira sempre o documento oficial no link de cada contrato. Contrato, aditivo, dispensa ou inexigibilidade não são, por si só, irregularidade.<br>
+  Fontes: Diário Oficial do Município de Raposa · <a href="https://pncp.gov.br" target="_blank" rel="noopener">PNCP</a> · imprensa citada.<br>
+  <span id="upd"></span><br>
+  © Portal Upaon Açu · Instagram <b>@portal.upaon.acu</b>
+</footer>
+
+<script>
+/* ===================== Curadoria ===================== */
+const DOM_RAPOSA='https://administracaopublica.com.br/diario-oficial?token=1fea43fec0ccd7f2b0cbf55804aca8182177ab79';
+const PDF=a=>'https://administracaopublica.com.br/downloads?n=01612325000198&a='+a;
+const MUNICIPIOS=[
+  {id:'raposa',nome:'Raposa',ativo:true,desc:'Contratos de 2020 a 2026, por ano, mês e área'},
+  {id:'sao-luis',nome:'São Luís',ativo:false,desc:'Grande Ilha'},
+  {id:'sao-jose-de-ribamar',nome:'São José de Ribamar',ativo:false,desc:'Grande Ilha'},
+  {id:'paco-do-lumiar',nome:'Paço do Lumiar',ativo:false,desc:'Grande Ilha'}
+];
+const INFO={facts:[['Prefeito','Eudes Barros (PL)'],['Eleito em 2024','63,17% dos votos'],['CNPJ','01.612.325/0001-98']]};
+const ACHADOS=[
+  {t:'Escritório de advocacia contratado sem licitação',v:15472883.33,p:'Maior contrato do período. Inexigibilidade nº 021/2026 para assessoria jurídica tributária, consultoria e recuperação de créditos, por 12 meses. Contrato 002/2026-SEMFAZ com Jacqueline de Paula Barbosa Sociedade de Advogados (CNPJ 18.985.386/0001-01).',q:'O pagamento é fixo ou um percentual do que for recuperado? Por que não houve licitação?',src:[['Diário ed. 01543 · 09/09/2026',PDF('dr-a_a7835ee2-7652-4f3c-864b-f059f1eb9df5.pdf')]]},
+  {t:'Creche Dom Alonso contratada duas vezes',v:4089648.63,p:'Em jul/2024 a J. R. Pereira Construções foi contratada por R$ 4,09 milhões (contrato 051/2024). Em mai/2026 o contrato foi rescindido "em comum acordo". Em out/2026 a obra foi recontratada com a Omnia Construções por R$ 3,89 milhões (contrato 022/2026-SECAP).',q:'Quanto foi pago à primeira empresa? Em que estágio a obra estava na rescisão?',src:[['1º contrato · ed. 01078',PDF('DI_01078_20240705164229.pdf')],['Rescisão · ed. 01479',PDF('dr-a_c094c3cf-73bc-41d5-b608-ba39fb3ef64c.pdf')],['Novo contrato · ed. 01562',PDF('dr-a_8020a875-c563-400a-bf4f-f563d645ac6d.pdf')]]},
+  {t:'Terceirização de R$ 22 milhões com uma única empresa',v:22008175,p:'Seis contratos com a L.G de Sousa Soluções e Negócios (CNPJ 14.659.934/0001-44) assinados em 18 e 19/03/2026, para serviços gerais, apoio administrativo e logística em várias secretarias.',q:'Quantos trabalhadores terceirizados foram contratados e onde estão lotados?',src:[['Diário ed. 01448 · 18/03/2026',PDF('dr-a_9251235d-8c81-4eab-bd23-ba6696804955.pdf')]]},
+  {t:'Mesma construtora: obras somam cerca de R$ 19,7 milhões',v:19683526,p:'A J. R. Pereira Construções aparece na Escola Cumbique (R$ 9,3 mi), na Creche Dom Alonso (R$ 4,09 mi, depois rescindida) e em unidades habitacionais (R$ 6,3 mi). O contrato 043/2023-SEMED, da mesma empresa, recebeu aditivos de fev/2024 a out/2025, com acréscimos que passam de R$ 900 mil.',q:'Qual a situação de cada obra hoje? Quanto já foi pago?',src:[['Escola Cumbique · ed. 01078',PDF('DI_01078_20240705164229.pdf')]]},
+  {t:'Festas, estrutura de eventos e shows',v:6950000,p:'R$ 2 milhões com a T. A. da S. Lopes (estrutura, bandas e fogos), assinado em 23/12/2024, e R$ 3,2 milhões com a Maranhão Eventos em jun/2026. Shows contratados sem licitação somam cerca de R$ 1,5 milhão; os maiores foram Solange Almeida (R$ 300 mil), Thiago Freitas (R$ 300 mil) e Vitor Fernandes (R$ 200 mil).',q:'Quais eventos foram realizados com esses contratos e quanto custou cada um?',src:[['Eventos dez/2024 · ed. 01167',PDF('DI_01167_20241223165239.pdf')],['Show Solange · ed. 01359',PDF('dr-a_6161f952-cb7e-402d-9623-b16c1cb70b6b.pdf')]]},
+  {t:'Usina de energia solar em prédios públicos',v:8394997.99,p:'Contrato 002/2024 com a R. de C. G. da Silva Energia Solar para instalar geradores fotovoltaicos em telhados e áreas de prédios públicos.',q:'As placas foram instaladas? A conta de luz da prefeitura caiu?',src:[['Diário ed. 01004 · 23/02/2024',PDF('DI_01004_20240223161208.pdf')]]},
+  {t:'Combustível concentrado em um único posto',v:13848262,p:'A Rolim & Rolim aparece em dezenas de contratos de combustível. Só o FUNDEB (recurso da educação) contratou R$ 2,6 milhões em jan/2026.',q:'Qual o consumo de cada secretaria e quantos veículos a frota tem?',src:[['Contratos da empresa','#raposa-empresa-09420750000197']]}
+];
+const NOTICIAS=[{fonte:'Imirante',data:'05/09/2026',t:'TCE aprova com ressalvas as contas de governo de Raposa',p:'Na sessão em que reprovou as contas de três cidades, o TCE-MA incluiu Raposa entre as prefeituras com contas aprovadas com ressalvas. A matéria não informa o exercício.',url:'https://m.imirante.com/noticias/maranhao/2026/09/05/ipolitica-tce-reprova-contas-de-3-cidades-do-maranhao-veja-lista'}];
+const LINKS=[['Diário Oficial de Raposa','todas as edições',DOM_RAPOSA],['Contratos no PNCP','portal nacional','https://pncp.gov.br/app/contratos?q=01612325000198'],['Site da Prefeitura','raposa.ma.gov.br','https://raposa.ma.gov.br/'],['Pedido de informação (e-SIC)','esic@raposa.ma.gov.br','mailto:esic@raposa.ma.gov.br'],['Notícias no Google','“Prefeitura de Raposa”','https://news.google.com/search?q=%22Prefeitura%20de%20Raposa%22&hl=pt-BR&gl=BR&ceid=BR:pt-419'],['Ministério Público (MPMA)','recomendações e ações','https://www.google.com/search?q=site%3Ampma.mp.br+Raposa+prefeitura'],['Tribunal de Contas (TCE-MA)','contas e julgamentos','https://www.google.com/search?q=site%3Atcema.tc.br+Raposa']];
+
+/* ===================== Utilidades ===================== */
+const app=document.getElementById('app');
+const $=(s,r=document)=>r.querySelector(s);
+const brl=v=>(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const brl2=v=>(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const short=v=>v>=1e9?'R$ '+(v/1e9).toLocaleString('pt-BR',{maximumFractionDigits:2})+' bi':v>=1e6?'R$ '+(v/1e6).toLocaleString('pt-BR',{maximumFractionDigits:1})+' mi':v>=1e3?'R$ '+(v/1e3).toLocaleString('pt-BR',{maximumFractionDigits:0})+' mil':brl(v);
+const digits=s=>String(s||'').replace(/\D/g,'');
+const fmtCnpj=s=>{s=digits(s);return s.length===14?s.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,'$1.$2.$3/$4-$5'):s};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
+const fdate=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4):'';
+const MESES=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const MESES_L=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const isC=a=>a.tipo==='Contrato';
+const sum=l=>l.reduce((s,a)=>s+(isC(a)?(a.valor||0):0),0);
+function group(list,key){const g={};for(const a of list){const k=typeof key==='function'?key(a):a[key];(g[k]=g[k]||{k,v:0,n:0,ad:0,items:[]});g[k].items.push(a);if(isC(a)){g[k].v+=a.valor||0;g[k].n++;}else g[k].ad++;}return Object.values(g).sort((a,b)=>b.v-a.v);}
+function bars(groups,{sel,onclick='',sub}={}){const top=groups[0]?.v||1;return groups.map((o,i)=>`<div class="rk${sel===o.k?' sel':''}" ${onclick?`data-pick="${esc(o.k)}"`:''}><span class="n">${i+1}</span><span class="nm" title="${esc(o.k)}">${esc(o.k)}</span><span class="v">${short(o.v)}</span><div class="track"><i style="width:${o.v/top*100}%"></i></div><span class="sub">${sub?sub(o):`${o.n} contrato${o.n!==1?'s':''}${o.ad?` · ${o.ad} aditivo${o.ad>1?'s':''}`:''}`}</span></div>`).join('');}
+function itemHTML(a){return `<a class="it" href="#c-${a.id}"><div class="row1"><span class="emp">${esc(a.empresa||'Empresa não identificada')}</span><span class="val">${a.valor!=null?brl(a.valor):'—'}</span></div><div class="obj">${esc(a.objeto||a.texto.slice(0,200))}</div><div class="meta"><span class="tag${isC(a)?'':' ad'}">${esc(a.tipo)}</span><span class="tag">${esc(a.area)}</span><span class="tag">${esc(a.cat)}</span>${a.data} · ${a.fonte==='pncp'?'PNCP':'Diário nº '+esc(a.ed)}${a.modal?' · '+esc(a.modal.toLowerCase()):''}</div></a>`;}
+function listHTML(list,limit=40,id='lst'){return `<div class="list" id="${id}">${list.slice(0,limit).map(itemHTML).join('')||'<p class="sub">Nenhum contrato encontrado.</p>'}</div>${list.length>limit?`<button class="more" data-more="${id}">Mostrar mais (${(list.length-limit).toLocaleString('pt-BR')} restantes)</button>`:''}`;}
+function wireMore(root,list,id='lst',step=60){let n=40;root.querySelector(`[data-more="${id}"]`)?.addEventListener('click',e=>{n+=step;$('#'+id).innerHTML=list.slice(0,n).map(itemHTML).join('');if(n>=list.length)e.target.remove();else e.target.textContent=`Mostrar mais (${(list.length-n).toLocaleString('pt-BR')} restantes)`;});}
+
+/* ===================== Dados ===================== */
+let D=null,PN=null,PNkey={};
+const SEC={SEMED:'Educação',MDE:'Educação',FUNDEB:'Educação',SEMUS:'Saúde',FMS:'Saúde',FMUS:'Saúde',SEMAS:'Assistência Social',FMAS:'Assistência Social',SECAP:'Administração',SEMIT:'Infraestrutura',SEMINFRA:'Infraestrutura',SECULT:'Cultura',SEMAG:'Agricultura',SEMFAZ:'Fazenda',SMSP:'Segurança',SMSPR:'Segurança',SEMMA:'Meio Ambiente',SEMTUR:'Turismo',SEMPESCA:'Pesca',SEMEL:'Esporte e Lazer',SAAE:'Água e Esgoto (SAAE)',GP:'Gabinete'};
+const AREA_TXT=[['Saúde',/sa[úu]de|semus|hospital/i],['Educação',/educa[çc][ãa]o|semed|escola|fundeb/i],['Assistência Social',/assist[êe]ncia|semas|cras/i],['Infraestrutura',/infraestrutura|seminfra|semit/i],['Cultura',/cultura|secult/i],['Administração',/administra[çc][ãa]o|secap/i],['Agricultura',/agricultura/i],['Fazenda',/fazenda|semfaz/i],['Segurança',/seguran[çc]a/i],['Pesca',/pesca/i]];
+const CAT=[['Obras e reformas',/obra|engenharia|pavimenta|reforma|constru[çc]|amplia[çc]/i],['Combustível',/combust[íi]vel|gasolina|diesel|g[áa]s liq|GLP/i],['Alimentação e merenda',/aliment|merenda|refei[çc]|lanche|coffee|buffet|quentinha/i],['Festas, shows e eventos',/show|evento|festej|s[ãa]o jo[ãa]o|carnaval|banda|palco|sonoriza/i],['Saúde e medicamentos',/medicament|hospitalar|m[ée]dic|odontol|laborat|exame|ambul[âa]ncia/i],['Transporte e veículos',/ve[íi]culo|transporte|[ôo]nibus|m[áa]quina|pe[çc]as|pneu/i],['Assessoria e consultoria',/assessoria|consultoria|advoca|jur[íi]dic|cont[áa]bil|auditoria/i],['Aluguel de imóveis',/im[óo]vel/i],['Tecnologia e internet',/software|sistema|internet|inform[áa]tica|tecnologia|licen[çc]a de uso/i],['Material e limpeza',/material|limpeza|higiene|expediente|mobili/i],['Serviços terceirizados',/terceiriza|apoio administrativo|servi[çc]os gerais|m[ãa]o de obra/i],['Educação (livros e kits)',/livro|did[áa]tic|kit|rob[óo]tica|fardamento|uniforme/i],['Energia e iluminação',/ilumina[çc]|energia|fotovolt|el[ée]tric/i]];
+function fromPNCP(pn){
+  const atos=pn.contratos.filter(c=>c.data).map((c,i)=>{const sig=(String(c.numero||'').split('-')[1]||'').trim().toUpperCase();const o=c.objeto||'';const w=AREA_TXT.find(([n,re])=>re.test(o));const doc=(c.arquivos||[]).find(f=>/contrato/i.test(f.tipo||''))||(c.arquivos||[])[0];
+    return{id:'p'+c.ano+'-'+c.seq,fonte:'pncp',ed:'PNCP',data:fdate(c.data),ano:c.data.slice(0,4),mes:c.data.slice(5,7),pg:null,tipo:/aditivo/i.test(c.tipo||'')?'Aditivo':'Contrato',num:String(c.numero||c.titulo||''),sigla:sig,area:SEC[sig]||(w?w[0]:'Não informada'),empresa:c.empresa||'',cnpj:digits(c.cnpj),modal:c.modalidade||'',valor:c.valor,objeto:o,cat:(CAT.find(([n,re])=>re.test(o))||['Outros'])[0],texto:o,pdf:doc?.url||c.pagina,pncpPagina:c.pagina};});
+  return{gerado:pn.atualizado,edicoes:[],atos,soPNCP:true};
+}
+async function load(){
+  try{PN=await fetch('data/raposa_pncp.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null);}catch{PN=null;}
+  try{D=await fetch('data/raposa.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.json();});}catch(e){D=null;}
+  if(!D&&PN) D=fromPNCP(PN);
+  if(!D){app.innerHTML='<div class="status">Os dados ainda estão sendo preparados. Volte em alguns minutos.</div>';return false;}
+  for(const a of D.atos){a.ano=a.ano||a.data.slice(6);a.mes=a.mes||a.data.slice(3,5);}
+  if(PN){for(const c of PN.contratos){const n=parseInt(String(c.numero||'').replace(/\D.*$/,''),10);if(n)PNkey[n+'|'+c.ano+'|'+digits(c.cnpj)]=c;}}
+  $('#upd').textContent=(D.soPNCP?'':`Diário Oficial: ${D.edicoes.length.toLocaleString('pt-BR')} edições lidas, atualizado em ${new Date(D.gerado).toLocaleDateString('pt-BR')}.`)+(PN?` PNCP: ${PN.contratos.length.toLocaleString('pt-BR')} contratos, atualizado em ${new Date(PN.atualizado).toLocaleDateString('pt-BR')}.`:'');
+  return true;
+}
+function pncpMatch(a){const n=parseInt(a.num,10),y=(a.num.split('/')[1]||'').trim();return PNkey[n+'|'+y+'|'+digits(a.cnpj)]||null;}
+const ANOS=()=>[...new Set(D.atos.map(a=>a.ano))].sort();
+
+/* ===================== Telas ===================== */
+function viewInicio(){
+  const C=D.atos.filter(isC);
+  app.innerHTML=`
+  <section class="hero"><h1>Quanto a sua prefeitura gasta, <em>com quem e em quê</em>.</h1>
+    <p>Todos os contratos publicados no Diário Oficial, por ano, mês e área, com o documento oficial de cada um. Começando por Raposa.</p>
+    <form class="search" id="hs"><input id="hq" placeholder="Busque empresa, CNPJ ou assunto (ex.: combustível)"><button>Buscar</button></form>
+    <div class="hint">A busca procura nos contratos de Raposa. Para ver uma empresa em todo o Maranhão, digite o CNPJ completo.</div></section>
+  <section class="block"><h2>Escolha o estado</h2><p class="sub">Comece pelo Maranhão e escolha o município.</p>
+    <a class="state" href="#maranhao"><svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 8l14 4 8-2 10 6 6 10-2 10 4 8-8 10-12 2-8-6-10 2-6-10 4-12-6-10z" fill="#f5b82e"/></svg><div><h2>Maranhão</h2><p>Raposa já disponível · outros municípios em breve</p></div></a></section>
+  <section class="block"><h2>Raposa em números</h2><p class="sub">${D.soPNCP?'Contratos registrados no PNCP':D.edicoes.length.toLocaleString('pt-BR')+' edições do Diário Oficial lidas'}, de ${ANOS()[0]} a ${ANOS().at(-1)}.</p>
+    <div class="grid">
+      <a class="tile" href="#raposa"><h3>${short(sum(C))}</h3><p>em ${C.length.toLocaleString('pt-BR')} contratos publicados</p></a>
+      <a class="tile" href="#raposa-ano-${ANOS().at(-1)}"><h3>Por ano e mês</h3><p>o que foi gasto em cada mês e em qual área</p></a>
+      <a class="tile" href="#raposa-apuracao"><h3>${ACHADOS.length} pontos</h3><p>para apuração encontrados no Diário Oficial</p></a>
+    </div></section>`;
+  $('#hs').onsubmit=e=>{e.preventDefault();const v=$('#hq').value.trim();if(!v)return;location.hash=digits(v).length===14?'#empresa-'+digits(v):'#raposa-contratos';if(digits(v).length!==14)setTimeout(()=>{const i=$('#f-q');if(i){i.value=v;i.dispatchEvent(new Event('input'));}},60);};
+}
+function viewMaranhao(){
+  app.innerHTML=`<div class="crumbs"><a href="#inicio">Início</a> › <b>Maranhão</b></div>
+  <section class="block"><h2>Municípios do Maranhão</h2><p class="sub">Começamos pela Grande Ilha. Novos municípios entram em breve.</p>
+  <input class="filter" id="mf" placeholder="Procurar município…" style="max-width:360px"><div class="grid" id="mg"></div></section>`;
+  const draw=()=>{const f=norm($('#mf').value);$('#mg').innerHTML=MUNICIPIOS.filter(m=>!f||norm(m.nome).includes(f)).map(m=>m.ativo?`<a class="tile" href="#${m.id}"><span class="badge">DISPONÍVEL</span><h3>${esc(m.nome)}</h3><p>${esc(m.desc)}</p></a>`:`<div class="tile off"><span class="badge">EM BREVE</span><h3>${esc(m.nome)}</h3><p>${esc(m.desc)}</p></div>`).join('');};
+  $('#mf').oninput=draw;draw();
+}
+function shell(tab){
+  const anos=ANOS();
+  const T=[['visao','Visão geral','#raposa'],['ano','Por ano','#raposa-ano-'+anos.at(-1)],['contratos','Todos os contratos','#raposa-contratos'],['empresas','Empresas','#raposa-empresas'],['apuracao','Pontos para apuração','#raposa-apuracao'],['noticias','Notícias','#raposa-noticias'],['fontes','Fontes oficiais','#raposa-fontes']];
+  app.innerHTML=`<div class="crumbs"><a href="#inicio">Início</a> › <a href="#maranhao">Maranhão</a> › <b>Raposa</b></div>
+  <div class="mhead"><h1>Raposa</h1><div class="facts">${INFO.facts.map(([k,v])=>`<span class="pill">${esc(k)}: <b>${esc(v)}</b></span>`).join('')}<span class="pill">${D.soPNCP?'Fonte: <b>PNCP</b>':`Diário Oficial: <b>${D.edicoes.length.toLocaleString('pt-BR')} edições</b>`}</span></div></div>
+  <div class="tabs">${T.map(([k,t,h])=>`<a class="tab${k===tab?' on':''}" href="${h}">${t}</a>`).join('')}</div><div id="pane"></div>`;
+  return $('#pane');
+}
+function viewVisao(){
+  const p=shell('visao'),C=D.atos.filter(isC),anos=ANOS();
+  const ys=anos.map(y=>({k:y,v:sum(D.atos.filter(a=>a.ano===y)),n:D.atos.filter(a=>a.ano===y&&isC(a)).length})),ym=Math.max(...ys.map(x=>x.v),1);
+  const max=C.reduce((m,a)=>(a.valor||0)>(m.valor||0)?a:m,{valor:0});
+  p.innerHTML=`<div class="kpis"><div class="kpi big"><b>${short(sum(C))}</b><span>contratado de ${anos[0]} a ${anos.at(-1)}</span></div><div class="kpi"><b>${C.length.toLocaleString('pt-BR')}</b><span>contratos</span></div><div class="kpi"><b>${(D.atos.length-C.length).toLocaleString('pt-BR')}</b><span>aditivos</span></div><div class="kpi"><b>${short(max.valor)}</b><span>maior contrato</span></div></div>
+  <div class="card"><h2>Contratado por ano <small>clique no ano para ver mês a mês</small></h2><div class="rank">${ys.slice().reverse().map(o=>`<a class="rk" href="#raposa-ano-${o.k}" style="color:inherit;text-decoration:none"><span class="n"></span><span class="nm"><b>${o.k}</b></span><span class="v">${short(o.v)}</span><div class="track"><i style="width:${o.v/ym*100}%"></i></div><span class="sub">${o.n} contratos</span></a>`).join('')}</div></div>
+  <div class="two"><div class="card"><h2>Por área <small>todos os anos</small></h2><div class="rank">${bars(group(C,'area').slice(0,10))}</div></div>
+  <div class="card"><h2>Por tipo de gasto <small>todos os anos</small></h2><div class="rank">${bars(group(C,'cat').slice(0,10))}</div></div></div>
+  <div class="card"><h2>Os 10 maiores contratos</h2>${listHTML(C.slice().sort((a,b)=>(b.valor||0)-(a.valor||0)),10,'top')}</div>
+  <div class="card"><h2>Pontos para apuração</h2>${ACHADOS.slice(0,2).map(findHTML).join('')}<a class="more" href="#raposa-apuracao">Ver os ${ACHADOS.length} pontos →</a></div>`;
+}
+function viewAno(ano){
+  const p=shell('ano'),anos=ANOS();
+  const st={mes:null,area:null,cat:null};
+  p.innerHTML=`<div class="tabs sm">${anos.slice().reverse().map(y=>`<a class="tab${y===ano?' on':''}" href="#raposa-ano-${y}">${y}</a>`).join('')}</div><div id="yb"></div>`;
+  const yb=$('#yb'),all=D.atos.filter(a=>a.ano===ano);
+  function render(){
+    const byM=MESES.map((m,i)=>{const l=all.filter(a=>+a.mes===i+1);return{i,l,v:sum(l),n:l.filter(isC).length};}),mm=Math.max(...byM.map(x=>x.v),1);
+    const base=all.filter(a=>(st.mes==null||+a.mes===st.mes+1));
+    const sel=base.filter(a=>(!st.area||a.area===st.area)&&(!st.cat||a.cat===st.cat));
+    const C=sel.filter(isC);
+    const titulo=(st.mes!=null?MESES_L[st.mes]+' de ':'')+ano;
+    yb.innerHTML=`<div class="kpis"><div class="kpi big"><b>${short(sum(sel))}</b><span>contratado em ${titulo}</span></div><div class="kpi"><b>${C.length}</b><span>contratos</span></div><div class="kpi"><b>${sel.length-C.length}</b><span>aditivos</span></div><div class="kpi"><b>${short(Math.max(0,...C.map(a=>a.valor||0)))}</b><span>maior contrato</span></div></div>
+    <div class="card"><h2>Mês a mês <small>clique num mês para filtrar</small></h2><div class="months">${byM.map(o=>`<button class="mo${st.mes===o.i?' on':''}${o.l.length?'':' empty'}" data-m="${o.i}" ${o.l.length?'':'disabled'}><b>${MESES[o.i]}</b><span>${o.v?short(o.v):'—'}</span><small>${o.n} contrato${o.n!==1?'s':''}</small><div class="mini"><i style="width:${o.v/mm*100}%"></i></div></button>`).join('')}</div></div>
+    ${st.mes!=null||st.area||st.cat?`<div class="chips">${st.mes!=null?`<button class="chip" data-x="mes">${MESES_L[st.mes]} ✕</button>`:''}${st.area?`<button class="chip" data-x="area">${esc(st.area)} ✕</button>`:''}${st.cat?`<button class="chip" data-x="cat">${esc(st.cat)} ✕</button>`:''}</div>`:''}
+    <div class="two"><div class="card"><h2>Por área (secretaria) <small>clique para filtrar</small></h2><div class="rank" data-g="area">${bars(group(base.filter(a=>!st.cat||a.cat===st.cat),'area'),{sel:st.area,onclick:1})}</div></div>
+    <div class="card"><h2>Por tipo de gasto <small>clique para filtrar</small></h2><div class="rank" data-g="cat">${bars(group(base.filter(a=>!st.area||a.area===st.area),'cat'),{sel:st.cat,onclick:1})}</div></div></div>
+    <div class="card"><h2>Contratos de ${esc(titulo)}${st.area?' · '+esc(st.area):''}${st.cat?' · '+esc(st.cat):''} <small>${sel.length} itens · ordenados por valor</small></h2>${listHTML(sel.slice().sort((a,b)=>(b.valor||0)-(a.valor||0)),40,'yl')}</div>`;
+    wireMore(yb,sel.slice().sort((a,b)=>(b.valor||0)-(a.valor||0)),'yl');
+    yb.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const m=+b.dataset.m;st.mes=st.mes===m?null:m;render();});
+    yb.querySelectorAll('[data-g] [data-pick]').forEach(r=>r.onclick=()=>{const g=r.closest('[data-g]').dataset.g,v=r.dataset.pick;st[g]=st[g]===v?null:v;render();});
+    yb.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{st[b.dataset.x]=null;render();});
+  }
+  render();
+}
+function viewContratos(){
+  const p=shell('contratos'),anos=ANOS();
+  const areas=[...new Set(D.atos.map(a=>a.area))].sort(),cats=[...new Set(D.atos.map(a=>a.cat))].sort();
+  p.innerHTML=`<div class="card"><h2>Todos os contratos e aditivos <small id="cnt"></small></h2>
+  <div class="filters"><input id="f-q" placeholder="Empresa, CNPJ, objeto, número…"><select id="f-ano"><option value="">Todos os anos</option>${anos.slice().reverse().map(y=>`<option>${y}</option>`).join('')}</select>
+  <select id="f-area"><option value="">Todas as áreas</option>${areas.map(a=>`<option>${esc(a)}</option>`).join('')}</select>
+  <select id="f-cat"><option value="">Todos os gastos</option>${cats.map(a=>`<option>${esc(a)}</option>`).join('')}</select>
+  <select id="f-ord"><option value="valor">Maior valor</option><option value="data">Mais recentes</option><option value="antigo">Mais antigos</option><option value="so">Só contratos</option><option value="ad">Só aditivos</option></select></div>
+  <div id="res" style="margin-top:8px"></div></div>`;
+  const dk=a=>a.ano+a.mes+a.data.slice(0,2);
+  function run(){
+    const q=norm($('#f-q').value),y=$('#f-ano').value,ar=$('#f-area').value,ct=$('#f-cat').value,o=$('#f-ord').value;
+    let l=D.atos.filter(a=>(!y||a.ano===y)&&(!ar||a.area===ar)&&(!ct||a.cat===ct)&&(o!=='so'||isC(a))&&(o!=='ad'||!isC(a))&&(!q||norm(a.empresa+' '+a.cnpj+' '+a.objeto+' '+a.num+' '+a.sigla+' '+a.ed).includes(q)));
+    l.sort(o==='data'?(a,b)=>dk(b).localeCompare(dk(a)):o==='antigo'?(a,b)=>dk(a).localeCompare(dk(b)):(a,b)=>(b.valor||0)-(a.valor||0));
+    $('#cnt').textContent=`${l.length.toLocaleString('pt-BR')} itens · soma dos contratos ${short(sum(l))}`;
+    $('#res').innerHTML=listHTML(l,40,'cl');wireMore($('#res'),l,'cl');
+  }
+  ['f-q','f-ano','f-area','f-cat','f-ord'].forEach(id=>$('#'+id).addEventListener(id==='f-q'?'input':'change',run));run();
+}
+function viewEmpresas(){
+  const p=shell('empresas'),C=D.atos.filter(isC);
+  const g=group(C,a=>a.cnpj||('nome:'+norm(a.empresa)));
+  for(const o of g){o.nome=o.items[0].empresa||'Não identificada';o.cnpj=o.items[0].cnpj;}
+  p.innerHTML=`<div class="card"><h2>Quem mais recebe da Prefeitura de Raposa <small>${g.length} empresas e pessoas · ${D.atos[0].ano}–${ANOS().at(-1)}</small></h2>
+  <input class="filter" id="ef" placeholder="Filtrar empresa ou CNPJ…" style="margin-bottom:12px"><div class="rank" id="er"></div><button class="more" id="em">Mostrar mais</button></div>`;
+  let n=30;const draw=()=>{const f=norm($('#ef').value);const l=g.filter(o=>!f||norm(o.nome+' '+o.cnpj).includes(f));const top=l[0]?.v||1;
+    $('#er').innerHTML=l.slice(0,n).map((o,i)=>`<a class="rk" href="#raposa-empresa-${o.cnpj||encodeURIComponent(o.nome)}" style="color:inherit;text-decoration:none"><span class="n">${i+1}</span><span class="nm">${esc(o.nome)}</span><span class="v">${short(o.v)}</span><div class="track"><i style="width:${o.v/top*100}%"></i></div><span class="sub">${o.cnpj?fmtCnpj(o.cnpj)+' · ':''}${o.n} contratos${o.ad?` · ${o.ad} aditivos`:''}</span></a>`).join('');$('#em').classList.toggle('hide',l.length<=n);};
+  $('#ef').oninput=()=>{n=30;draw();};$('#em').onclick=()=>{n+=50;draw();};draw();
+}
+function viewEmpresaRaposa(id){
+  const p=shell('empresas');id=decodeURIComponent(id);
+  const l=D.atos.filter(a=>digits(id).length===14?a.cnpj===digits(id):norm(a.empresa)===norm(id)).sort((a,b)=>(b.ano+b.mes).localeCompare(a.ano+a.mes));
+  const nome=l[0]?.empresa||id,C=l.filter(isC);
+  p.innerHTML=`<div class="card"><h2>${esc(nome)} <small>${digits(id).length===14?fmtCnpj(id):''}</small></h2>
+  <div class="kpis"><div class="kpi big"><b>${short(sum(l))}</b><span>contratado por Raposa</span></div><div class="kpi"><b>${C.length}</b><span>contratos</span></div><div class="kpi"><b>${l.length-C.length}</b><span>aditivos</span></div><div class="kpi"><b>${[...new Set(l.map(a=>a.area))].length}</b><span>áreas</span></div></div>
+  <div class="two"><div><h2 style="font-size:14px">Por ano</h2><div class="rank">${bars(group(l,'ano').sort((a,b)=>b.k.localeCompare(a.k)))}</div></div><div><h2 style="font-size:14px">Por área</h2><div class="rank">${bars(group(l,'area'))}</div></div></div>
+  ${digits(id).length===14?`<div class="btns"><a class="btn2" href="#empresa-${digits(id)}">Ver esta empresa em todo o Maranhão →</a></div>`:''}</div>
+  <div class="card"><h2>Contratos e aditivos <small>${l.length}</small></h2>${listHTML(l,40,'el')}</div>`;wireMore(p,l,'el');
+}
+function viewContrato(id){
+  const a=D.atos.find(x=>x.id===id);if(!a){app.innerHTML='<div class="status">Contrato não encontrado.</div>';return;}
+  const pn=a.cnpj?pncpMatch(a):null;const doc=(pn?.arquivos||[]).find(f=>/contrato/i.test(f.tipo||''))||(pn?.arquivos||[])[0];
+  const outros=D.atos.filter(x=>x.id!==a.id&&a.cnpj&&x.cnpj===a.cnpj).slice(-6).reverse();
+  app.innerHTML=`<div class="crumbs"><a href="#inicio">Início</a> › <a href="#raposa">Raposa</a> › <a href="#raposa-ano-${a.ano}">${a.ano}</a> › <b>${esc(a.tipo)} ${esc(a.num)}</b></div>
+  <div class="mhead"><span class="tag${isC(a)?'':' ad'}">${esc(a.tipo)}</span><span class="tag">${esc(a.area)}</span><span class="tag">${esc(a.cat)}</span>
+  <h1 style="font-size:24px;margin-top:8px">${esc(a.empresa||'Empresa não identificada')}</h1>
+  <div style="font-size:30px;font-weight:800;color:var(--gold);margin-top:6px">${a.valor!=null?brl2(a.valor):'Valor não informado'}</div>
+  <div class="btns">${a.fonte==='pncp'?`<a class="btn" href="${esc(a.pdf)}" target="_blank" rel="noopener">📝 Abrir o contrato (PDF oficial)</a>${a.pncpPagina?`<a class="btn2" href="${esc(a.pncpPagina)}" target="_blank" rel="noopener">Ver no PNCP ↗</a>`:''}`:`<a class="btn" href="${esc(a.pdf)}#page=${a.pg}" target="_blank" rel="noopener">📄 Abrir o documento oficial (Diário nº ${esc(a.ed)}, pág. ${a.pg})</a>`}
+  ${doc?`<a class="btn" href="${esc(doc.url)}" target="_blank" rel="noopener">📝 Contrato assinado (PDF) · PNCP</a>`:''}${pn?.pagina?`<a class="btn2" href="${esc(pn.pagina)}" target="_blank" rel="noopener">Ver no PNCP ↗</a>`:''}</div></div>
+  <div class="card"><h2>Dados do ${isC(a)?'contrato':'aditivo'}</h2><dl class="dl">
+    <dt>Número</dt><dd>${esc(a.num)}${a.sigla?' – '+esc(a.sigla):''}</dd>
+    <dt>${a.fonte==='pncp'?'Assinado em':'Publicado em'}</dt><dd>${a.data}${a.fonte==='pncp'?' · fonte: PNCP':` · Diário Oficial nº ${esc(a.ed)}, página ${a.pg}`}</dd>
+    <dt>Área</dt><dd>${esc(a.area)}</dd><dt>Tipo de gasto</dt><dd>${esc(a.cat)}</dd>
+    <dt>Empresa</dt><dd>${esc(a.empresa||'—')}${a.cnpj?` · CNPJ ${fmtCnpj(a.cnpj)}`:''}</dd>
+    <dt>Modalidade</dt><dd>${esc(a.modal?a.modal.toLowerCase():'—')}</dd>
+    <dt>Objeto</dt><dd>${esc(a.objeto||'—')}</dd>
+    ${pn?`<dt>No PNCP</dt><dd>${esc(pn.titulo||'')} · ${brl2(pn.valor)} · vigência até ${fdate(pn.vigencia_fim)}</dd>`:''}
+  </dl></div>
+  <div class="card"><h2>${a.fonte==='pncp'?'Objeto do contrato':'Texto do extrato publicado'} <small>${a.fonte==='pncp'?'informado ao PNCP':'leitura automática, confira no documento'}</small></h2><div class="doc">${esc(a.texto)}</div></div>
+  ${a.cnpj?`<div class="card"><h2>Outros contratos desta empresa em Raposa</h2>${outros.map(itemHTML).join('')||'<p class="sub">Nenhum outro.</p>'}<div class="btns"><a class="btn2" href="#raposa-empresa-${a.cnpj}">Todos desta empresa →</a><a class="btn2" href="#empresa-${a.cnpj}">Esta empresa em todo o Maranhão →</a></div></div>`:''}
+  <div class="btns"><button class="btn2" id="cp">Copiar resumo para post</button></div>`;
+  $('#cp').onclick=async e=>{const t=`${a.tipo} ${a.num} da Prefeitura de Raposa (${a.area}): ${a.empresa||''}${a.cnpj?' (CNPJ '+fmtCnpj(a.cnpj)+')':''}, ${a.valor!=null?brl2(a.valor):'valor não informado'}. Objeto: ${a.objeto}. Fonte: Diário Oficial nº ${a.ed}, ${a.data}, pág. ${a.pg}. Transparência Upaon Açu · @portal.upaon.acu`;try{await navigator.clipboard.writeText(t);e.target.textContent='Copiado ✓';}catch{window.prompt('Copie:',t);}};
+}
+function findHTML(f){return `<div class="find"><h3>${esc(f.t)}</h3><div class="val">${short(f.v)}</div><p>${esc(f.p)}</p><div class="q"><b>Pergunta:</b> ${esc(f.q)}</div><div class="src">${f.src.map(([t,u])=>`<a href="${esc(u)}" ${u.startsWith('#')?'':'target="_blank" rel="noopener"'}>${esc(t)} ↗</a>`).join('')}</div></div>`;}
+function viewApuracao(){shell('apuracao').innerHTML=`<div class="warn">Estes pontos saíram da leitura das edições do Diário Oficial. <b>Não são acusações</b>: são gastos altos ou situações que merecem perguntas à prefeitura. Cada um tem o link do documento oficial.</div>${ACHADOS.map(findHTML).join('')}`;}
+function viewNoticias(){shell('noticias').innerHTML=NOTICIAS.map(n=>`<a class="news" href="${esc(n.url)}" target="_blank" rel="noopener"><small>${esc(n.fonte)} · ${esc(n.data)}</small><h3>${esc(n.t)}</h3><p>${esc(n.p)}</p></a>`).join('')+`<div class="card"><h2>Acompanhe mais</h2><div class="links">${LINKS.slice(4).map(([t,s,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}<small>${esc(s)}</small></a>`).join('')}</div></div>`;}
+function viewFontes(){shell('fontes').innerHTML=`<div class="links">${LINKS.map(([t,s,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}<small>${esc(s)}</small></a>`).join('')}</div>`;}
+
+/* ===================== Empresa em todo o MA (PNCP ao vivo) ===================== */
+async function viewEmpresaMA(cnpj){
+  app.innerHTML=`<div class="crumbs"><a href="#inicio">Início</a> › <a href="#maranhao">Maranhão</a> › <b>Empresa em todo o MA</b></div><div class="mhead"><h1 id="en" style="font-size:24px">${fmtCnpj(cnpj)}</h1><div class="facts"><span class="pill">Fonte: <b>PNCP</b></span></div></div><div class="status" id="st">Buscando no PNCP…</div><div id="pane"></div>`;
+  try{let all=[],total=0;
+    for(let p=1;p<=10;p++){const j=await fetch(`https://pncp.gov.br/api/search/?q=${cnpj}&tipos_documento=contrato&ordenacao=-data&pagina=${p}&tam_pagina=500&ufs=MA`).then(r=>r.json());total=j.total||0;all=all.concat(j.items||[]);$('#st').innerHTML=`Buscando no PNCP… ${all.length} de ${total}<div class="bar"><i style="width:${total?all.length/total*100:5}%"></i></div>`;if(all.length>=total||!(j.items||[]).length)break;}
+    const l=all.filter(i=>digits(i.fornecedor_ni)===cnpj&&!i.cancelado).map(i=>({k:i.municipio_nome+' – '+i.orgao_nome,v:+i.valor_global||0,d:i.data_assinatura,o:i.description,t:i.title,u:'https://pncp.gov.br/app'+i.item_url}));
+    if(!l.length){$('#st').textContent='Nenhum contrato desta empresa no PNCP do Maranhão.';return;}
+    $('#en').textContent=all.find(i=>digits(i.fornecedor_ni)===cnpj).fornecedor_nome;
+    const g={};for(const r of l){(g[r.k]=g[r.k]||{k:r.k,v:0,n:0});g[r.k].v+=r.v;g[r.k].n++;}const G=Object.values(g).sort((a,b)=>b.v-a.v);
+    $('#st').innerHTML=`<b>${l.length}</b> contratos com <b>${G.length}</b> órgãos do Maranhão no PNCP.`;
+    $('#pane').innerHTML=`<div class="kpis"><div class="kpi big"><b>${short(l.reduce((s,r)=>s+r.v,0))}</b><span>em contratos no MA</span></div><div class="kpi"><b>${l.length}</b><span>contratos</span></div><div class="kpi"><b>${G.length}</b><span>órgãos</span></div><div class="kpi"><b>${short(Math.max(...l.map(r=>r.v)))}</b><span>maior contrato</span></div></div>
+    <div class="card"><h2>De quem a empresa recebe</h2><div class="rank">${bars(G.slice(0,30))}</div></div>
+    <div class="card"><h2>Contratos</h2><div class="list">${l.sort((a,b)=>b.v-a.v).slice(0,200).map(r=>`<a class="it" href="${esc(r.u)}" target="_blank" rel="noopener"><div class="row1"><span class="emp">${esc(r.k)}</span><span class="val">${brl(r.v)}</span></div><div class="obj">${esc(r.o)}</div><div class="meta">${fdate(r.d)} · ${esc(r.t)} ↗</div></a>`).join('')}</div></div>`;
+  }catch(e){$('#st').textContent='Não foi possível consultar o PNCP agora. Tente de novo em instantes.';}
+}
+
+/* ===================== Rotas ===================== */
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1))||'inicio';window.scrollTo(0,0);
+  if(h==='inicio')return viewInicio();
+  if(h==='maranhao')return viewMaranhao();
+  if(h==='raposa'||h==='raposa-visao')return viewVisao();
+  if(h.startsWith('raposa-ano-'))return viewAno(h.slice(11));
+  if(h==='raposa-contratos')return viewContratos();
+  if(h==='raposa-empresas')return viewEmpresas();
+  if(h.startsWith('raposa-empresa-'))return viewEmpresaRaposa(h.slice(15));
+  if(h==='raposa-apuracao')return viewApuracao();
+  if(h==='raposa-noticias')return viewNoticias();
+  if(h==='raposa-fontes')return viewFontes();
+  if(h.startsWith('c-'))return viewContrato(h.slice(2));
+  if(h.startsWith('empresa-'))return viewEmpresaMA(digits(h.slice(8)));
+  viewInicio();
+}
+load().then(ok=>{if(ok){addEventListener('hashchange',route);route();}});
+</script>
+</body>
+</html>
